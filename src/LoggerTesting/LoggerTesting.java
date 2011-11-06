@@ -6,6 +6,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import LoggerTesting.subpackage.TestObject;
+
 /**
  * Test project for testing logger integration with two different loggers
  * 
@@ -26,9 +28,9 @@ public class LoggerTesting {
 	 * Default logger for logging simulation information. Should be used from
 	 * the whole project
 	 */
-	public static final Logger SIM_LOG = Logger.getLogger("SimLog");
+	public static final Logger SIM_LOG = Logger.getLogger("SimulationLoggger");
 	/** flag for determining wether productiv mode is on or off */
-	public static final boolean PRODUCTIVE_MODE = false;
+	public static final boolean PRODUCTIVE_MODE = true;
 	/** Handlers for logging in file */
 	private static FileHandler devFileHandler, simFileHandler;
 	/** Handlers for logging on the console */
@@ -45,6 +47,7 @@ public class LoggerTesting {
 		log.severe("Critical App");
 		SIM_LOG.severe("Critical Simulation");
 		testMethod();
+		TestObject o = new TestObject();
 	}
 	
 	/**
@@ -113,7 +116,7 @@ public class LoggerTesting {
 			devFileHandler.setLevel(Level.CONFIG);
 		} else {
 			// log more information on the console
-			devConsoleHandler.setLevel(Level.ALL);
+			devConsoleHandler.setLevel(Level.INFO);
 			// log everything to the log file
 			devFileHandler.setLevel(Level.ALL);
 		}
