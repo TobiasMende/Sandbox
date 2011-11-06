@@ -22,7 +22,7 @@ public class SimLogFormatter extends Formatter {
 		String dateStr = dateFormat.format(new Date(rec.getMillis()));
 		r.append(dateStr);
 		r.append(" - " + rec.getLevel().getLocalizedName());
-		r.append(" -> " + rec.getMessage());
+		r.append(" \t " + rec.getMessage());
 		r.append("\n");
 		return r.toString();
 	}

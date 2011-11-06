@@ -28,6 +28,7 @@ public class ExtendedConsoleHandler extends Handler {
 	@Override
 	public void publish(LogRecord record) {
 		if (record.getLevel().intValue() < getLevel().intValue()) {
+			//ignore messages below the current log level
 			return;
 		}
 		if (getFormatter() == null) {

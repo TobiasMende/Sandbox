@@ -3,6 +3,7 @@ package LoggerTesting;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 /**
@@ -25,7 +26,14 @@ public class HTMLFormatter extends java.util.logging.Formatter {
 		r.append("<span class='log_class'>" + className + "</span> ");
 		r.append("<span class='log_method'>(" + methodName + ")</span>:<br />");
 		r.append("<span class='log_date'>" + dateStr + "</span><br />");
-		r.append("<span class='log_entry'>" + rec.getMessage() + "</span>");
+		r.append("<span class='log_entry");
+		if(rec.getLevel().intValue() <= Level.FINE.intValue())
+			r.append(" log_fine");
+		else if(rec.getLevel().intValue() <= Level.INFO.intValue())
+			r.append(" log_default");
+		else 
+			r.append(" log_error");
+		r.append("'>" + rec.getMessage() + "</span>");
 		r.append("</div>");
 		return r.toString();
 	}
@@ -41,8 +49,11 @@ public class HTMLFormatter extends java.util.logging.Formatter {
 		r.append("<title>JRummikub 06: Log</title>");
 		r.append("<style type='text/css'>");
 		r.append("body,html {font-family:Verdana,Helvetica, sans-serif; font-size:10pt;}");
+		r.append(".log_error {color:#822618;}");
+		r.append(".log_default {color:#000000;}");
+		r.append(".log_fine {color:#14690A;}");
 		r.append(".log_entry {width:100%; margin-bottom:10px}");
-		r.append(".log_class {color:#4B6A1B; font-size:120%;}");
+		r.append(".log_class {color:#27003E; font-size:120%;}");
 		r.append(".log_method {color: #979797; font-size:110%;}");
 		r.append(".log_date {width: 10em; font-size: 8pt; color:#666666;}");
 		r.append("</style>");

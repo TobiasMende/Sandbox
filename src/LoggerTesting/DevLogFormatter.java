@@ -22,9 +22,9 @@ public class DevLogFormatter extends Formatter {
 		String dateStr = dateFormat.format(new Date(rec.getMillis()));
 		r.append(dateStr);
 		r.append(": " + rec.getSourceClassName());
-		r.append(" (" + rec.getSourceMethodName() + ")");
-		r.append(" - " + rec.getLevel().getLocalizedName());
-		r.append(" -> " + rec.getMessage());
+		r.append(":" + rec.getSourceMethodName()+" \t ");
+		r.append(rec.getLevel().getLocalizedName());
+		r.append("\t\t" + rec.getMessage());
 		r.append("\n");
 		return r.toString();
 	}

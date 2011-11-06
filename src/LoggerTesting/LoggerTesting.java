@@ -44,7 +44,16 @@ public class LoggerTesting {
 		log.fine("Ein Application Fine Log");
 		log.severe("Critical App");
 		SIM_LOG.severe("Critical Simulation");
-
+		testMethod();
+	}
+	
+	/**
+	 * Method for testing the use of log.entering and log.exiting
+	 */
+	private static void testMethod() {
+		log.entering(LoggerTesting.class.getName(), "testMethod");
+		log.info("Do something in the test method");
+		log.exiting(LoggerTesting.class.getName(), "testMethod");
 	}
 
 	private static void setupLogging() {
@@ -104,7 +113,7 @@ public class LoggerTesting {
 			devFileHandler.setLevel(Level.CONFIG);
 		} else {
 			// log more information on the console
-			devConsoleHandler.setLevel(Level.INFO);
+			devConsoleHandler.setLevel(Level.ALL);
 			// log everything to the log file
 			devFileHandler.setLevel(Level.ALL);
 		}
@@ -134,4 +143,5 @@ public class LoggerTesting {
 		simFileHandler.setLevel(Level.ALL);
 
 	}
+	
 }
