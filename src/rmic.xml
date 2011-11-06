@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="test" default="rmic" basedir="." >
+ <target name="rmic">
+  <rmic base="." sourcebase="." includes="SimpleServer.class" />
+ </target>
+</project>
