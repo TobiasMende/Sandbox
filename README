@@ -1,0 +1,7 @@
+Just a place for testing code snippets.
+
+In the source folder there are some packages containing java code
+
+LoggerTesting: Explains how to set up the default java logging API with different handlers and loggers
+RMITesting: testing functionality of the java remote method invocation features
+ThreadTesting: Simpel example for testing interactivity of different threads in java
